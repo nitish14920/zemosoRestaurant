@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="/CSS/styles.css" />
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      /* Modal Content */
+      .modal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        height: 80%;
+        align-items: center;
+        overflow: auto;
+      }
+
+      .modal-content p {
+        font-size: 35px;
+      }
+
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="table-container">
+        <h2>Tables</h2>
+        <div class="horizintalLine"></div>
+        <!-- <input type="text" name="" id="" placeholder="Search Table" /> -->
+
+        <!-- The Modal -->
+        <div id="myModalOne" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content" id="myModal1">
+            <span class="close" onclick="close(event)">&times;</span>
+            <p>Orders</p>
+            <div class="table-details">
+              <span>Total Items:<span id="total-items1">0</span></span>
+              <span>Total Cost:<span id="total-cost1">0</span></span>
+            </div>
+          </div>
+        </div>
+        <div id="myModalTwo" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content" id="myModal2">
+            <span class="close" onclick="close(event)">&times;</span>
+            <p>Orders</p>
+            <div class="table-details">
+              <span>Total Items:<span id="total-items2">0</span></span>
+              <span>Total Cost:<span id="total-cost2">0</span></span>
+            </div>
+          </div>
+        </div>
+        <div id="myModalThree" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content" id="myModal3">
+            <span class="close" onclick="close(event)">&times;</span>
+            <p>Orders</p>
+            <div class="table-details">
+              <span>Total Items:<span id="total-items3">0</span></span>
+              <span>Total Cost:<span id="total-cost3">0</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="tables">
+          <div
+            class="table"
+            ondragover="allowDrop(event)"
+            ondrop="drop1(event)"
+            id="table1"
+          >
+            <span>Table 1</span>
+            <div class="table-details">
+              <span id="total-items-table1">Total Items:</span>
+              <span id="total-cost-table1">Total Cost:</span>
+            </div>
+          </div>
+          <div
+            class="table"
+            ondragover="allowDrop(event)"
+            ondrop="drop2(event)"
+          >
+            <span>Table 2</span>
+            <div class="table-details">
+              <span id="total-items-table2">Total Items:</span>
+              <span id="total-cost-table2">Total Cost:</span>
+            </div>
+          </div>
+          <div
+            class="table"
+            ondragover="allowDrop(event)"
+            ondrop="drop3(event)"
+          >
+            <span>Table 3</span>
+            <div class="table-details">
+              <span id="total-items-table3">Total Items:</span>
+              <span id="total-cost-table3">Total Cost:</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="menu">
+        <h2>Menu</h2>
+        <div class="horizintalLine"></div>
+        <input
+          type="text"
+          id="menuSearch"
+          onkeyup="searchMenu()"
+          placeholder="Search Menu"
+        />
+
+        <div id="menu-container"></div>
+      </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script>
+      // Get the modal
+      var modal1 = document.getElementById("myModalOne");
+      var modal2 = document.getElementById("myModalTwo");
+      var modal3 = document.getElementById("myModalThree");
+
+      // Get the button that opens the modal
+      var btn = document.getElementsByClassName("table");
+      console.log(btn[2]);
+
+      // Get the <span> element that closes the modal
+      var span1 = document.getElementsByClassName("close")[0];
+      var span2 = document.getElementsByClassName("close")[1];
+      var span3 = document.getElementsByClassName("close")[2];
+
+      // When the user clicks the button, open the modal
+      btn[0].onclick = function () {
+        modal1.style.display = "block";
+      };
+      btn[1].onclick = function () {
+        modal2.style.display = "block";
+      };
+      btn[2].onclick = function () {
+        modal3.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span1.onclick = function (event) {
+        modal1.style.display = "none";
+      };
+      span2.onclick = function (event) {
+        modal2.style.display = "none";
+      };
+      span3.onclick = function (event) {
+        modal3.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal1) {
+          modal1.style.display = "none";
+        } else if (event.target == modal2) {
+          modal2.style.display = "none";
+        } else if (event.target == modal3) {
+          modal3.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

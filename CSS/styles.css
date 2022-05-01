@@ -1,0 +1,88 @@
+.table,
+.tables,
+.container,
+.menu,
+.table-container,
+.menu-item,
+.table-details {
+  display: flex;
+}
+
+body {
+  font-family: sans-serif;
+}
+.table-container {
+  width: 30vw;
+  height: 100vh;
+  background-color: gray;
+  align-items: center;
+  flex-direction: column;
+}
+.menu {
+  width: 70vw;
+  height: 100vh;
+  background-color: rgb(206, 206, 206);
+  align-items: center;
+  flex-direction: column;
+}
+
+.horizintalLine {
+  height: 2px;
+  width: 90%;
+  background-color: rgb(46, 45, 45);
+}
+.table,
+.menu-item {
+  height: 100px;
+  width: 300px;
+  box-shadow: 1px 4px 3px 5px rgb(107, 107, 107);
+  background-color: rgb(241, 229, 206);
+}
+.menu-item {
+  width: 55vw;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.tables {
+  height: 500px;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.menu-price,
+.menu-title {
+  font-size: 1.5rem;
+}
+.menu-title {
+  width: 300px;
+}
+.menu-image {
+  width: 80px;
+  height: 80px;
+}
+.table-details {
+  width: 300px;
+  justify-content: space-around;
+}
+.table-details span {
+  font-size: 20px;
+}
+
+.table {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+#menu-container {
+  width: 58vw;
+  height: 70vh;
+  overflow-y: auto;
+}
+input {
+  width: 20vw;
+  height: 4vh;
+  border-radius: 10px;
+  margin: 20px 0px;
+}
