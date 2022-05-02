@@ -46,9 +46,32 @@ function allowDrop(e) {
 
 function drop1(ev) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  var item = document.getElementById(data);
+  var id = ev.dataTransfer.getData("text");
+
   var div = document.getElementById("myModal1");
+
+  var menu = JSON.parse(localStorage.getItem("menu"));
+  var menu_div = document.createElement("div");
+
+  menu_div.setAttribute("id", id);
+  menu_div.setAttribute("draggable", "true");
+  menu_div.ondragstart = function drag(e) {
+    console.log(e.target.id);
+    e.dataTransfer.setData(`text`, e.target.id);
+  };
+  menu_div.classList.add("menu-item");
+  var menu_title = document.createElement("span");
+  menu_title.classList.add("menu-title");
+  var menu_price = document.createElement("span");
+  menu_price.classList.add("menu-price");
+  var menu_image = document.createElement("img");
+  menu_image.classList.add("menu-image");
+  menu_title.innerText = menu[id - 1].menuName;
+  menu_price.innerText = menu[id - 1].price;
+  menu_image.src = menu[id - 1].image;
+
+  menu_div.append(menu_title, menu_price, menu_image);
+
   var totalItemsTable1 = document.getElementById("total-items-table1");
   var totalItems = document.getElementById("total-items1");
 
@@ -58,17 +81,40 @@ function drop1(ev) {
 
   var totalCost = document.getElementById("total-cost1");
   totalCost.innerText =
-    Number(totalCost.innerText) + Number(item.childNodes[1].innerText.slice(3));
+    Number(totalCost.innerText) +
+    Number(menu_div.childNodes[1].innerText.slice(3));
 
   totalItemsTable1.innerText = "Total Items: " + totalItems.innerText;
   totalCostTable1.innerText = "Total Cost: " + totalCost.innerText;
-  div.append(item);
+  div.append(menu_div);
 }
 function drop2(ev) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  var item = document.getElementById(data);
+  var id = ev.dataTransfer.getData("text");
+
   var div = document.getElementById("myModal2");
+
+  var menu = JSON.parse(localStorage.getItem("menu"));
+  var menu_div = document.createElement("div");
+
+  menu_div.setAttribute("id", id);
+  menu_div.setAttribute("draggable", "true");
+  menu_div.ondragstart = function drag(e) {
+    console.log(e.target.id);
+    e.dataTransfer.setData(`text`, e.target.id);
+  };
+  menu_div.classList.add("menu-item");
+  var menu_title = document.createElement("span");
+  menu_title.classList.add("menu-title");
+  var menu_price = document.createElement("span");
+  menu_price.classList.add("menu-price");
+  var menu_image = document.createElement("img");
+  menu_image.classList.add("menu-image");
+  menu_title.innerText = menu[id - 1].menuName;
+  menu_price.innerText = menu[id - 1].price;
+  menu_image.src = menu[id - 1].image;
+
+  menu_div.append(menu_title, menu_price, menu_image);
   var totalItemsTable1 = document.getElementById("total-items-table2");
   var totalCostTable1 = document.getElementById("total-cost-table2");
   var totalItems = document.getElementById("total-items2");
@@ -76,17 +122,41 @@ function drop2(ev) {
 
   var totalCost = document.getElementById("total-cost2");
   totalCost.innerText =
-    Number(totalCost.innerText) + Number(item.childNodes[1].innerText.slice(3));
+    Number(totalCost.innerText) +
+    Number(menu_div.childNodes[1].innerText.slice(3));
 
   totalItemsTable1.innerText = "Total Items: " + totalItems.innerText;
   totalCostTable1.innerText = "Total Cost: " + totalCost.innerText;
-  div.append(item);
+  div.append(menu_div);
 }
 function drop3(ev) {
   ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  var item = document.getElementById(data);
+  var id = ev.dataTransfer.getData("text");
+
   var div = document.getElementById("myModal3");
+
+  var menu = JSON.parse(localStorage.getItem("menu"));
+  var menu_div = document.createElement("div");
+
+  menu_div.setAttribute("id", id);
+  menu_div.setAttribute("draggable", "true");
+  menu_div.ondragstart = function drag(e) {
+    console.log(e.target.id);
+    e.dataTransfer.setData(`text`, e.target.id);
+  };
+  menu_div.classList.add("menu-item");
+  var menu_title = document.createElement("span");
+  menu_title.classList.add("menu-title");
+  var menu_price = document.createElement("span");
+  menu_price.classList.add("menu-price");
+  var menu_image = document.createElement("img");
+  menu_image.classList.add("menu-image");
+  menu_title.innerText = menu[id - 1].menuName;
+  menu_price.innerText = menu[id - 1].price;
+  menu_image.src = menu[id - 1].image;
+
+  menu_div.append(menu_title, menu_price, menu_image);
+
   var totalItemsTable1 = document.getElementById("total-items-table3");
   var totalCostTable1 = document.getElementById("total-cost-table3");
 
@@ -95,12 +165,13 @@ function drop3(ev) {
 
   var totalCost = document.getElementById("total-cost3");
   totalCost.innerText =
-    Number(totalCost.innerText) + Number(item.childNodes[1].innerText.slice(3));
+    Number(totalCost.innerText) +
+    Number(menu_div.childNodes[1].innerText.slice(3));
 
   totalItemsTable1.innerText = "Total Items: " + totalItems.innerText;
   totalCostTable1.innerText = "Total Cost: " + totalCost.innerText;
 
-  div.append(item);
+  div.append(menu_div);
 }
 
 function searchMenu() {
